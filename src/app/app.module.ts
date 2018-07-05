@@ -2,6 +2,7 @@ import { AdminAuthGuard } from './admin-auth-guard.service';
 import { UserService } from './user.service';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
+import { TripService } from './trip.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth'; 
 import { RouterModule } from '@angular/router'; 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
+import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -22,6 +25,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
+import { TripGeneratorFormComponent } from './admin/trip-generator-form/trip-generator-form.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +39,16 @@ import { LoginComponent } from './login/login.component';
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    TripGeneratorFormComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    FormsModule,
+    CustomFormsModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
@@ -54,8 +61,13 @@ import { LoginComponent } from './login/login.component';
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
 
       { 
-        path: 'admin/products', 
+        path: 'tattler/trips', 
         component: AdminProductsComponent, 
+        canActivate: [AuthGuard, AdminAuthGuard] 
+      },
+       { 
+        path: 'tattler/trips/new', 
+        component: TripGeneratorFormComponent, 
         canActivate: [AuthGuard, AdminAuthGuard] 
       },
       { 
@@ -69,7 +81,8 @@ import { LoginComponent } from './login/login.component';
     AuthService,
     AuthGuard,
     AdminAuthGuard,
-    UserService
+    UserService,
+    TripService
   ],
   bootstrap: [AppComponent]
 })
