@@ -26,63 +26,72 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { TripGeneratorFormComponent } from './admin/trip-generator-form/trip-generator-form.component';
+import { TripComponent } from './trip/trip.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    BsNavbarComponent,
-    HomeComponent,
-    ProductsComponent,
-    ShoppingCartComponent,
-    CheckOutComponent,
-    OrderSuccessComponent,
-    MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
-    LoginComponent,
-    TripGeneratorFormComponent
+  AppComponent,
+  BsNavbarComponent,
+  HomeComponent,
+  ProductsComponent,
+  ShoppingCartComponent,
+  CheckOutComponent,
+  OrderSuccessComponent,
+  MyOrdersComponent,
+  AdminProductsComponent,
+  AdminOrdersComponent,
+  LoginComponent,
+  TripGeneratorFormComponent,
+  TripComponent
   ],
   imports: [
-    BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    FormsModule,
-    CustomFormsModule,
-    NgbModule.forRoot(),
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'login', component: LoginComponent },
+  BrowserModule,
+  AngularFireModule.initializeApp(environment.firebase),
+  AngularFireDatabaseModule,
+  AngularFireAuthModule,
+  FormsModule,
+  CustomFormsModule,
+  NgbModule.forRoot(),
+  RouterModule.forRoot([
+    { path: '', component: HomeComponent },
+    { path: 'products', component: ProductsComponent },
+    { path: 'shopping-cart', component: ShoppingCartComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'trip/:tripname/:tripid', component: TripComponent},
 
-      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
-      { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
-      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+    { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
+    { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+    { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
 
-      { 
-        path: 'tattler/trips', 
-        component: AdminProductsComponent, 
-        canActivate: [AuthGuard, AdminAuthGuard] 
-      },
-       { 
-        path: 'tattler/trips/new', 
-        component: TripGeneratorFormComponent, 
-        canActivate: [AuthGuard, AdminAuthGuard] 
-      },
-      { 
-        path: 'admin/orders', 
-        component: AdminOrdersComponent, 
-        canActivate: [AuthGuard, AdminAuthGuard] 
-      }
+    
+    { 
+      path: 'tattler/trips/new', 
+      component: TripGeneratorFormComponent, 
+      canActivate: [AuthGuard, AdminAuthGuard] 
+    },
+    { 
+      path: 'tattler/trips/:id', 
+      component: TripGeneratorFormComponent, 
+      canActivate: [AuthGuard, AdminAuthGuard] 
+    },
+    { 
+      path: 'tattler/trips', 
+      component: AdminProductsComponent, 
+      canActivate: [AuthGuard, AdminAuthGuard] 
+    },
+    { 
+      path: 'admin/orders', 
+      component: AdminOrdersComponent, 
+      canActivate: [AuthGuard, AdminAuthGuard] 
+    }
     ])    
   ],
   providers: [
-    AuthService,
-    AuthGuard,
-    AdminAuthGuard,
-    UserService,
-    TripService
+  AuthService,
+  AuthGuard,
+  AdminAuthGuard,
+  UserService,
+  TripService
   ],
   bootstrap: [AppComponent]
 })

@@ -4,7 +4,7 @@
 		<form #f="ngForm" (ngSubmit)="save(f.value)">
 			<div class="form-group">
 				<label for="tripname">Trip Name</label>
-				<input #tripname="ngModel" ngModel name="tripname" type="text" id="tripname" class="form-control" required />
+				<input #tripname="ngModel" [(ngModel)]="trip.tripname" name="tripname" type="text" id="tripname" class="form-control" required />
 				<div class="alert alert-danger" *ngIf="tripname.touched && tripname.invalid">
 					Name required.
 				</div>
@@ -12,7 +12,7 @@
 
 			<div class="form-group">
 				<label for="description">Description</label>
-				<textarea #description="ngModel"  ngModel name="description" id="description" cols="30" rows="10" class="form-control" required></textarea>
+				<textarea #description="ngModel"  [(ngModel)]="trip.description" name="description" id="description" cols="30" rows="10" class="form-control" required></textarea>
 				<div class="alert alert-danger" *ngIf="description.touched && description.invalid">
 					Description required.
 				</div>
@@ -20,8 +20,8 @@
 
 			<div class="row">
 				<div class="form-group col">
-					<label for="minmembers">Min members allowed</label>
-					<input #minmembers="ngModel" ngModel name="minmembers" id="minmembers" type="number" class="form-control" required [min]="1" value="1" placeholder="1">
+					<label for="minmembers">Min members required</label>
+					<input #minmembers="ngModel" [(ngModel)]="trip.minmembers" name="minmembers" id="minmembers" type="number" class="form-control" required [min]="1" value="1" placeholder="1">
 					<div class="alert alert-danger" *ngIf="minmembers.touched && minmembers.invalid">
 						<div *ngIf="minmembers.errors.required">Minimum members required.</div>
 						<div *ngIf="minmembers.errors.min">Should be at least 1.</div>
@@ -30,7 +30,7 @@
 
 				<div class="form-group col">
 					<label for="maxmembers">Max members allowed</label>
-					<input #maxmembers="ngModel" ngModel name="maxmembers" id="maxmembers" type="number" class="form-control" required value="1" [min]="1" placeholder="1">
+					<input #maxmembers="ngModel" [(ngModel)]="trip.maxmembers" name="maxmembers" id="maxmembers" type="number" class="form-control" required value="1" [min]="1" placeholder="1">
 					<div class="alert alert-danger" *ngIf="maxmembers.touched && maxmembers.invalid">
 						<div *ngIf="maxmembers.errors.required">Maximum members required.</div>
 						<div *ngIf="maxmembers.errors.min">Should be at least 1.</div>
@@ -46,7 +46,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">$</span>
 						</div>
-						<input #costadult="ngModel" ngModel type="number" id="costadult" name="costadult" class="form-control" aria-label="Cost per adult" aria-describedby="cost per adult" [min]="0" required>
+						<input #costadult="ngModel" [(ngModel)]="trip.costadult" type="number" id="costadult" name="costadult" class="form-control" aria-label="Cost per adult" aria-describedby="cost per adult" [min]="0" required>
 					</div>
 					<div class="alert alert-danger" *ngIf="costadult.touched && costadult.invalid">
 						<div *ngIf="costadult.errors.required">Cost is required.</div>
@@ -60,7 +60,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">$</span>
 						</div>
-						<input #costchild="ngModel" ngModel type="number" id="costchild" name="costchild" class="form-control" aria-label="Cost per child" aria-describedby="cost per child" [min]="0" required>
+						<input #costchild="ngModel" [(ngModel)]="trip.costchild" type="number" id="costchild" name="costchild" class="form-control" aria-label="Cost per child" aria-describedby="cost per child" [min]="0" required>
 					</div>
 					<div class="alert alert-danger" *ngIf="costchild.touched && costchild.invalid">
 						<div *ngIf="costchild.errors.required">Cost is required.</div>
@@ -72,7 +72,7 @@
 
 			<div class="form-group">
 				<label for="tripimage">Trip image URL</label>
-				<input #tripimage="ngModel" ngModel name="tripimage" type="text" id="tripimage" class="form-control" required />
+				<input #tripimage="ngModel" [(ngModel)]="trip.tripimage" name="tripimage" type="text" id="tripimage" class="form-control" required />
 				<div class="alert alert-danger" *ngIf="tripimage.touched && tripimage.invalid">
 					Image required.
 				</div>
@@ -84,23 +84,23 @@
 
 	<div class="col">
 		<div class="card" style="width: 18rem;">
-			<img class="card-img-top" [src]="tripimage.value" alt="Card image cap">
+			<img class="card-img-top" [src]="trip.tripimage" *ngIf="trip.tripimage">
 			<div class="card-body">
-				<h5 class="card-title">{{ tripname.value }}</h5>
+				<h5 class="card-title">{{ trip.tripname }}</h5>
 	
 					<div class="row">
 						<div class="col">
-							Adult: ${{ costadult.value}}<br/>
-							Child: ${{ costchild.value}}
+							Adult: ${{ trip.costadult }}<br/>
+							Child: ${{ trip.costchild }}
 						</div>
 						<div class="col">
-							Max: {{ maxmembers.value}}<br/>
-							Min: {{ minmembers.value}}
+							Max: {{ trip.maxmembers }}<br/>
+							Min: {{ trip.minmembers }}
 						</div>
 					</div>
 					<br/>
-				<p class="card-text">{{ description.value }}</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
+				<p class="card-text">{{ trip.description }}</p>
+				<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
 			</div>
 		</div>
 	</div>

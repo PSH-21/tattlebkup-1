@@ -20,7 +20,7 @@
 
 			<p class="card-text">{{ trip.description }}</p>
 			<a [routerLink]="['/tattler/trips', trip.$key]" class="btn btn-primary">Edit</a>
-			<button (onlick)="deleteTrip(trip.$key)" class="btn btn-primary">Delete</button>
+			<button type="button" (click)="deleteTrip(trip.$key)" class="btn btn-danger">Delete</button>
 		</div>
 	</div>
 </div>

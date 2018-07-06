@@ -1,3 +1,37 @@
-<p>
-  home works!
-</p>
+
+<form>
+	<div class="input-group mb-3">
+		<input #searchtrip="ngModel" ngModel name="searchtrip" id="searchtrip" type="text" class="form-control" placeholder="Search..." aria-label="Search for trips" aria-describedby="search for trips">
+		<div class="input-group-append">
+			<button class="btn btn-outline-secondary" type="button" (click)="searchTrips(searchtrip.value)">Search</button>
+		</div>
+	</div>
+</form>
+
+<div class="d-flex flex-row bd-highlight mb-3">
+	<div class="card" style="width: 18rem;" *ngFor="let trip of trips$ | async">
+		<a [routerLink]="['/trip/', trip.tripname, trip.$key]">
+			<img class="card-img-top" [src]="trip.tripimage" [alt]="trip.tripname">
+		</a>
+		<div class="card-body">
+			<h5 class="card-title">{{ trip.tripname }}</h5>
+			<span>Hosted by {{ (getUser(trip.uid)).name }}</span>
+			<div class="row">
+				<div class="col">
+					Adult: ${{ trip.costadult }}<br/>
+					Child: ${{ trip.costchild }}
+				</div>
+				<div class="col">
+					Max: {{ trip.maxmembers }}<br/>
+					Min: {{ trip.minmembers }}
+				</div>
+			</div>
+			<br/>
+
+			<p class="card-text">{{ trip.description }}</p>
+			<!-- <a [routerLink]="['/tattler/trips', trip.$key]" class="btn btn-primary">Edit</a>
+			<button type="button" (click)="deleteTrip(trip.$key)" class="btn btn-danger">Delete</button> -->
+		</div>
+	</div>
+</div>
+

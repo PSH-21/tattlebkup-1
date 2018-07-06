@@ -16,8 +16,9 @@ export class AdminProductsComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	deleteTrip(trip){
-		this.tripService.deleteTrip(trip);
+	deleteTrip(tripid){
+		if(confirm('Are you sure to delete?'))
+			this.tripService.deleteTrip(tripid);
 	}
 
 }

@@ -13,9 +13,15 @@ export class AppComponent {
     auth.user$.subscribe(user => {
       if (user) {
         userService.save(user);
+
         localStorage.setItem('uid', user.uid);
+
         let returnUrl = localStorage.getItem('returnUrl');
-        router.navigateByUrl(returnUrl);
+        if(returnUrl){
+            router.navigateByUrl(returnUrl);
+            localStorage.removeItem('returnUrl');
+        }
+        
       }
     });
   }
