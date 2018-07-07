@@ -29,7 +29,6 @@ import { TripGeneratorFormComponent } from './admin/trip-generator-form/trip-gen
 import { TripComponent } from './trip/trip.component';
 import { ConfirmbookingComponent } from './confirmbooking/confirmbooking.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AdminManageBookingsComponent } from './admin-manage-bookings/admin-manage-bookings.component';
 import { ManageBookingsComponent } from './admin/manage-bookings/manage-bookings.component';
 
 @NgModule({
@@ -49,7 +48,6 @@ import { ManageBookingsComponent } from './admin/manage-bookings/manage-bookings
   TripComponent,
   ConfirmbookingComponent,
   ProfileComponent,
-  AdminManageBookingsComponent,
   ManageBookingsComponent
   ],
   imports: [
@@ -73,7 +71,11 @@ import { ManageBookingsComponent } from './admin/manage-bookings/manage-bookings
     { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
     { path: 'my/trips', component: MyTripsComponent, canActivate: [AuthGuard] },
 
-    
+    { 
+      path: 'tattler/manage-bookings', 
+      component: ManageBookingsComponent, 
+      canActivate: [AuthGuard, AdminAuthGuard] 
+    },
     { 
       path: 'tattler/trips/new', 
       component: TripGeneratorFormComponent, 

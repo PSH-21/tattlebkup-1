@@ -26,9 +26,12 @@ export class AuthService {
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }
 
+
   logout() { 
-    this.afAuth.auth.signOut();
+    return this.afAuth.auth.signOut();
   }
+
+
 
   get appUser$() : Observable<AppUser> {
     return this.user$

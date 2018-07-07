@@ -1,4 +1,4 @@
-
+<!-- 
 <form>
 	<div class="input-group mb-3">
 		<input #searchtrip="ngModel" ngModel name="searchtrip" id="searchtrip" type="text" class="form-control" placeholder="Search..." aria-label="Search for trips" aria-describedby="search for trips">
@@ -29,9 +29,53 @@
 			<br/>
 
 			<p class="card-text">{{ trip.description }}</p>
-			<!-- <a [routerLink]="['/tattler/trips', trip.$key]" class="btn btn-primary">Edit</a>
-			<button type="button" (click)="deleteTrip(trip.$key)" class="btn btn-danger">Delete</button> -->
+			
 		</div>
 	</div>
 </div>
+-->
 
+<main role="main">
+
+	<section class="jumbotron text-center">
+		<div class="container">
+			<h1 class="jumbotron-heading">tattle. <span class="ok">It's ok to gossip, sometimes. <a href="#">Know why</a></span></h1>
+			<p class="lead text-muted">"share and celebrate cultures openly and freely, and discover that <strong>we are not so different after all!"</strong></p>
+			
+
+			<div class="input-group mb-3">
+				<input #searchtrip="ngModel" ngModel name="searchtrip" id="searchtrip" type="text" class="form-control" placeholder="Search..." aria-label="Search for trips" aria-describedby="search for trips">
+				<div class="input-group-append">
+					<button class="btn btn-primary" type="button" (click)="searchTrips(searchtrip.value)">Let's Go!</button>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<div class="album py-5 bg-light">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-4" *ngFor="let trip of trips$ | async">
+					<div class="card mb-4 box-shadow">
+						<img class="card-img-top" [src]="trip.tripimage" [alt]="trip.tripname">
+						<div class="card-body">
+							<h5 class="card-title">{{ trip.tripname }}</h5>
+							<p class="card-text">{{ trip.description }}</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+								</div>
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</main>

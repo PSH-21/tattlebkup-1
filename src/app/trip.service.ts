@@ -51,4 +51,27 @@ export class TripService {
 		return this.db.list('tattlers/' + trip.trip.tattlerdetails.tattlerid + '/' + 'myadminbookings').push(trip);
 	}
 
+	getMyBookings(){
+		return this.db.list('tattlers/' + localStorage.getItem('uid') + '/myadminbookings');
+	}
+
+
+	setStatusbooking(status, bookingid, bookeduserid){
+		let update = {status : status}
+		alert(bookingid);
+		this.db.object('tattlers/' + bookeduserid + '/mybookings/' + bookingid).update(update);
+		alert(bookingid);
+		return this.db.object('tattlers/' + localStorage.getItem('uid') + '/myadminbookings/' + bookingid).update(update)
+	}
+
+
+
+
+
+
+
+
+
+
+
 }

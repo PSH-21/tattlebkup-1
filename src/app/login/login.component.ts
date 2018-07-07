@@ -13,4 +13,12 @@ export class LoginComponent {
   login() { 
     this.auth.login();
   }
+
+  
+
+  logout(){
+  	this.auth.logout().then(response => {
+  		alert(response);
+  	});
+  }
 }

@@ -1,3 +1,30 @@
-<p>
-  manage-bookings works!
-</p>
+<!-- <div *ngFor="let mybookings of mybookings$ | async">
+	{{ mybookings.trip.tripname }} {{ mybookings.status}}
+</div> -->
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Tour name</th>
+			<th>Booking details</th>
+			<th>Date of Tour</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let mybookings of mybookings$ | async">
+			<td>{{ mybookings.trip.tripname }}</td>
+			<td>
+				
+				${{ mybookings.grandtotal }}.00
+				
+			</td>
+			<td>{{ mybookings.tripdate}}</td>
+			<td>
+				Current status: {{ mybookings.status }} <br/>
+				<button class="btn btn-primary" (click)="confirmbooking(mybookings.$key, mybookings.uid)">Confirm</button>
+				<button class="btn btn-danger" (click)="rejectbooking(mybookings.$key,  mybookings.uid)">Reject</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
