@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TripService } from './../trip.service';
-import { ActivatedRoute } from '@angular/router';
+import { UserService } from './../user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import 'rxjs/add/operator/take';
 
 
@@ -11,7 +12,11 @@ import 'rxjs/add/operator/take';
 })
 export class TripComponent implements OnInit{
 	trip$;
-	constructor(private tripService: TripService, private route: ActivatedRoute) { 
+	constructor(private tripService: TripService, 
+		private route: ActivatedRoute, 
+		private router: Router,
+		private userService: UserService
+		) { 
 
 	}
 
@@ -24,4 +29,22 @@ export class TripComponent implements OnInit{
 
 	}
 
-}
+	confirmbooking(tripid, form){
+
+		let objTrip = {
+			tripid: tripid,
+			trip: this.trip$,
+			uid: (localStorage.uid) || null, //since booking up to this point is allowed as anonymous
+			tripdate: form.tripdate,
+			adults: form.adults,
+			children: form.child	
+		}
+
+		console.log('objTrip', objTrip);
+		localStorage.setItem('tripdetail', JSON.stringify(objTrip));
+
+
+		this.router.navigate(['/trip', tripid, 'confirm']);
+
+		}
+	}

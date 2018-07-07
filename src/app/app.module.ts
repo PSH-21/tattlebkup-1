@@ -21,12 +21,16 @@ import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
-import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { MyTripsComponent } from './my-trips/my-trips.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { TripGeneratorFormComponent } from './admin/trip-generator-form/trip-generator-form.component';
 import { TripComponent } from './trip/trip.component';
+import { ConfirmbookingComponent } from './confirmbooking/confirmbooking.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AdminManageBookingsComponent } from './admin-manage-bookings/admin-manage-bookings.component';
+import { ManageBookingsComponent } from './admin/manage-bookings/manage-bookings.component';
 
 @NgModule({
   declarations: [
@@ -37,12 +41,16 @@ import { TripComponent } from './trip/trip.component';
   ShoppingCartComponent,
   CheckOutComponent,
   OrderSuccessComponent,
-  MyOrdersComponent,
+  MyTripsComponent,
   AdminProductsComponent,
   AdminOrdersComponent,
   LoginComponent,
   TripGeneratorFormComponent,
-  TripComponent
+  TripComponent,
+  ConfirmbookingComponent,
+  ProfileComponent,
+  AdminManageBookingsComponent,
+  ManageBookingsComponent
   ],
   imports: [
   BrowserModule,
@@ -57,11 +65,13 @@ import { TripComponent } from './trip/trip.component';
     { path: 'products', component: ProductsComponent },
     { path: 'shopping-cart', component: ShoppingCartComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'trip/:tripid/confirm', component: ConfirmbookingComponent, canActivate: [AuthGuard]},
     { path: 'trip/:tripname/:tripid', component: TripComponent},
+    { path: 'profile/:uid', component: ProfileComponent},
 
     { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
     { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
-    { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+    { path: 'my/trips', component: MyTripsComponent, canActivate: [AuthGuard] },
 
     
     { 

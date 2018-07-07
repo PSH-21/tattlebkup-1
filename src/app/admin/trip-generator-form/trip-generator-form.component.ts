@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TripService } from './../../trip.service';
+import { UserService } from './../../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/take';
 
@@ -13,7 +14,8 @@ export class TripGeneratorFormComponent{
 	id;
 	constructor(private tripService: TripService, 
 		private router: Router,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private userService: UserService
 		) { 
 
 		this.id = this.route.snapshot.paramMap.get('id');
@@ -26,7 +28,18 @@ export class TripGeneratorFormComponent{
 	save(trip){
 		//console.log(trip);
 		if(this.id) this.tripService.updateTrip(this.id, trip);
-		else this.tripService.createTrip(trip);
+		else {
+			let tattler;
+			this.userService.get(localStorage.getItem('uid')).take(1).subscribe(tattler =>{
+				tattler = tattler;
+				console.log(tattler.details);
+				trip.tattlerdetails = tattler.details;
+				trip.tattlerdetails.tattlerid = localStorage.getItem('uid');
+				console.log(trip);
+				this.tripService.createTrip(trip);
+			})
+			
+		}
 		
 		this.router.navigate(['/tattler/trips']);
 	}

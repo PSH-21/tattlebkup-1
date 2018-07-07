@@ -1,0 +1,31 @@
+<h3>Your Itinerary</h3>
+
+<p><a [routerLink]="['/trip', trip.trip.tripname, trip.tripid]">{{ trip.trip.tripname }} </a> organized by 
+	<a [routerLink]="['/profile', trip.trip.tattlerdetails.tattlerid]">{{ trip.trip.tattlerdetails.name }}</a></p>
+<p>Trip date: {{ trip.tripdate | date }}</p>
+<p>Adults: {{ trip.adults }} </p>
+<p>Children: {{ trip.children }}</p>
+<p>Meeting place: {{ trip.trip.meetingaddress}} <a [href]="trip.trip.meetinglocation">(Google maps)</a></p>
+<p>
+	<strong> Cost </strong>
+</p>
+<p> {{ trip.adults }} Adult(s) x {{trip$.costadult}} = ${{ adulttotal }}.00 </p> 
+<p> {{ trip.children }} Child(ren) x {{trip$.costadult}} = ${{ childtotal }}.00 </p>
+<p> <strong>Total to pay : $CAD {{ grandtotal }}.00 </strong>
+
+<form #f="ngForm">
+<p>	Pay by 
+	<input #paymentmode="ngModel" ngModel type="radio" value="cash" id="paymentmode" 
+	name="paymentmode" [checked] > 
+	<label for="paymentmode">Cash</label>  
+
+	<input  #paymentmode="ngModel" ngModel type="radio" value="paypal" id="paymentmode" name="paymentmode" > 
+	<label for="paymentmode">PayPal (You will be redirected to the payment gateway)</label>
+</p>
+
+<input type="checkbox"  #tandc="ngModel" ngModel name="tandc" id="tandc"  > I agree to the <a href="#">terms and conditions</a>
+
+<br/>
+<p><button class="btn btn-primary" (click)="book(f.value)">Confirm Booking</button></p>
+
+</form>

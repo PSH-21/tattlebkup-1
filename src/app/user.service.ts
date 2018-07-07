@@ -9,7 +9,7 @@ export class UserService {
   constructor(private db: AngularFireDatabase) { }
 
   save(user: firebase.User) {
-    this.db.object('/tattlers/' + user.uid).update({
+    this.db.object('/tattlers/' + user.uid + '/details/').update({
       name: user.displayName,
       email: user.email
     });
@@ -17,5 +17,9 @@ export class UserService {
 
   get(uid: string): FirebaseObjectObservable<AppUser> { 
     return this.db.object('/tattlers/' + uid);
+  }
+
+  getMyBookings(){
+    return this.db.list('/tattlers/' + localStorage.getItem('uid') + '/mybookings');
   }
 }

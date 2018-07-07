@@ -10,14 +10,14 @@ export class TripService {
 	constructor(private db: AngularFireDatabase) { }
 
 	createTrip(trip){
-		trip.uid = localStorage.getItem('uid');
+		//trip.uid = localStorage.getItem('uid');
 		return this.db.list('/trips').push(trip);
 	}
 
 	getTrips(){
 		return this.db.list('/trips', {
 			query: {
-				orderByChild: 'uid',
+				orderByChild: 'tattlerdetails/tattlerid',
 				equalTo: this.uid
 			}
 		});
@@ -43,6 +43,12 @@ export class TripService {
 				startAt: query
 			}
 		})
+	}
+
+	createBooking(trip){
+		//console.log(trip);
+		this.db.list('tattlers/' + trip.uid + '/' + 'mybookings').push(trip);
+		return this.db.list('tattlers/' + trip.trip.tattlerdetails.tattlerid + '/' + 'myadminbookings').push(trip);
 	}
 
 }

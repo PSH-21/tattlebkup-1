@@ -16,6 +16,7 @@ export class BsNavbarComponent {
   }
 
   logout() {
+    localStorage.removeItem('uid');
     this.auth.logout();
     this.router.navigate(['/']);
   }
