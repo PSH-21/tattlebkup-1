@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TripService } from './../trip.service';
 import { UserService } from './../user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TripcardComponent } from './../tripcard/tripcard.component';
 import 'rxjs/add/operator/take';
 
 

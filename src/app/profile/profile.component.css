@@ -1,0 +1,14 @@
+.profilephoto{
+	height:160px;
+	width: 160px;
+	border-radius: 50%;
+}
+
+.description{
+	color: #777;
+	font-size: 0.9rem;
+}
+
+.mytrips{
+	/*border-bottom: 1px solid #aaa;*/
+}

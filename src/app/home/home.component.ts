@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TripService } from './../trip.service';
 import { UserService } from './../user.service';
+import { TripcardComponent } from './../tripcard/tripcard.component';
 
 
 @Component({
@@ -12,8 +13,9 @@ export class HomeComponent {
 
 	trips$;
 	user$;
+	featuredTrips$;
   constructor(private tripService: TripService, private  userService: UserService) { 
-
+  	this.featuredTrips$ = this.tripService.getFeaturedTrips();
   }
 
  searchTrips(query){

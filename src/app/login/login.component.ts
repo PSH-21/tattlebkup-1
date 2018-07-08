@@ -18,7 +18,7 @@ export class LoginComponent {
 
   logout(){
   	this.auth.logout().then(response => {
-  		alert(response);
+  		console.log(response);
   	});
   }
 }

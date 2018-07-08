@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   constructor(private userService: UserService, private auth: AuthService, router: Router) {
     auth.user$.subscribe(user => {
+      console.log(user);
       if (user) {
         userService.save(user);
 

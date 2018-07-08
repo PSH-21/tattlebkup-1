@@ -30,6 +30,8 @@ import { TripComponent } from './trip/trip.component';
 import { ConfirmbookingComponent } from './confirmbooking/confirmbooking.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ManageBookingsComponent } from './admin/manage-bookings/manage-bookings.component';
+import { TripcardComponent } from './tripcard/tripcard.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { ManageBookingsComponent } from './admin/manage-bookings/manage-bookings
   TripComponent,
   ConfirmbookingComponent,
   ProfileComponent,
-  ManageBookingsComponent
+  ManageBookingsComponent,
+  TripcardComponent,
+  FooterComponent
   ],
   imports: [
   BrowserModule,

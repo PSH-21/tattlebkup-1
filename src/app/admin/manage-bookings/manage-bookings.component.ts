@@ -10,15 +10,15 @@ export class ManageBookingsComponent implements OnInit {
 	mybookings$
 
   constructor(private tripService: TripService) {
-  	this.mybookings$ = this.tripService.getMyBookings();
+  	this.mybookings$ = this.tripService.getBookingsForMe();
    }
 
-   confirmbooking(bookingid, bookeduserid){
-   		this.tripService.setStatusbooking('Confirmed', bookingid, bookeduserid);
+   confirmbooking(bookingid){
+   		this.tripService.setStatusbooking('Confirmed', bookingid);
    }
 
    rejectbooking(bookingid, bookeduserid){
-   	 	this.tripService.setStatusbooking('Rejected by tattler', bookingid, bookeduserid);
+   	 	this.tripService.setStatusbooking('Cancelled by tattler', bookingid);
    }
   ngOnInit() {
   }

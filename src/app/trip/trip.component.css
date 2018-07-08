@@ -13,3 +13,18 @@
 	width: auto;
 	min-width: 100%;
 }
+
+.description{
+	color: #999;
+	font-size: 0.9rem;
+}
+
+.profilephoto{
+	height:30px;
+	width: 30px;
+	border-radius: 50%;
+}
+
+.row{
+	font-size: 0.9rem;
+}

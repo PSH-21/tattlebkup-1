@@ -11,12 +11,23 @@ export class UserService {
   save(user: firebase.User) {
     this.db.object('/tattlers/' + user.uid + '/details/').update({
       name: user.displayName,
-      email: user.email
+      email: user.email,
+      photoURL: user.photoURL,
+      uid: user.uid
     });
   }
 
   get(uid: string): FirebaseObjectObservable<AppUser> { 
     return this.db.object('/tattlers/' + uid);
+  }
+
+  getByEmail(email) {
+    return this.db.list('/tattlers', {
+      query: {
+        orderByChild: 'details/email',
+        equalTo: email
+      }
+    })
   }
 
   getMyBookings(){

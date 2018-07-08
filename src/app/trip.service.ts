@@ -14,11 +14,12 @@ export class TripService {
 		return this.db.list('/trips').push(trip);
 	}
 
-	getTrips(){
+	getTrips(profileuid?){
+		let uid = (profileuid)? profileuid : this.uid;
 		return this.db.list('/trips', {
 			query: {
 				orderByChild: 'tattlerdetails/tattlerid',
-				equalTo: this.uid
+				equalTo: uid
 			}
 		});
 	}
@@ -45,23 +46,50 @@ export class TripService {
 		})
 	}
 
+	getMyTrips(){
+
+	}
+
 	createBooking(trip){
 		//console.log(trip);
-		this.db.list('tattlers/' + trip.uid + '/' + 'mybookings').push(trip);
-		return this.db.list('tattlers/' + trip.trip.tattlerdetails.tattlerid + '/' + 'myadminbookings').push(trip);
+		// this.db.list('tattlers/' + trip.uid + '/' + 'mybookings').push(trip);
+		// return this.db.list('tattlers/' + trip.trip.tattlerdetails.tattlerid + '/' + 'myadminbookings').push(trip);
+		return this.db.list('bookings/').push(trip);
 	}
 
 	getMyBookings(){
-		return this.db.list('tattlers/' + localStorage.getItem('uid') + '/myadminbookings');
+		//return this.db.list('tattlers/' + localStorage.getItem('uid') + '/myadminbookings');
+		return this.db.list('bookings/', {
+			query: {
+				orderByChild: 'uid',
+				equalTo: localStorage.getItem('uid')
+			}
+		})
+	}
+
+	getBookingsForMe(){
+		return this.db.list('bookings/', {
+			query: {
+				orderByChild: 'trip/tattlerdetails/tattlerid',
+				equalTo: localStorage.getItem('uid')
+			}
+		})
 	}
 
 
-	setStatusbooking(status, bookingid, bookeduserid){
+	setStatusbooking(status, bookingid){
 		let update = {status : status}
 		alert(bookingid);
-		this.db.object('tattlers/' + bookeduserid + '/mybookings/' + bookingid).update(update);
-		alert(bookingid);
-		return this.db.object('tattlers/' + localStorage.getItem('uid') + '/myadminbookings/' + bookingid).update(update)
+		return this.db.object('bookings/' + bookingid).update(update);
+	}
+
+	getFeaturedTrips(){
+		return this.db.list('trips/', {
+			query: {
+				orderByChild: 'featured',
+				equalTo: true
+			}
+		})
 	}
 
 
