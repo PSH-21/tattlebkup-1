@@ -27,9 +27,9 @@
 					<div class="form-group">
 						<div class="form-group">
 						<label for="paymentmode">Choose payment method:<span class="small"> (For PayPal, you will be redirected to the payment gateway)</span></label>
-						<select #paymentmode="ngModel" ngModel name="paymentmode" id="paymentmode" class="form-control" size="2" >
-							<option value="cash" selected="selected">Cash</option>
-							<option value="paypal">PayPal</option>
+						<select #paymentmode="ngModel" ngModel name="paymentmode" id="paymentmode" class="form-control" size="3" placeholder="Choose payment mode">
+							<option [ngValue]="'cash'" selected>Cash</option>
+							<option [ngValue]="'paypal'" >PayPal</option>
 						</select>
 						</div>
 						<!-- <div class="form-check">
@@ -60,14 +60,14 @@
 						</div> -->
 					</div>
 					<div class="form-check">
-						<input type="checkbox"  #tandc="ngModel" [(ngModel)]="checked" name="tandc" id="tandc" class="form-check-input" > 
+						<input type="checkbox" #t name="tandc" id="tandc" class="form-check-input" > 
 						<label for="tandc" class="form-check-label">
 							I agree to the <a href="#">terms and conditions</a>
 						</label>
 					</div>	
 					<br/>
 					<div class="form-group">
-						<button class="btn btn-primary" [disabled]="!checked" (click)="book(f.value, p)">Confirm Booking</button>
+						<button class="btn btn-primary" [disabled]="!t.checked" (click)="book(f.value)">Confirm Booking</button>
 					</div>
 					
 				</form>

@@ -17,10 +17,6 @@ import { CustomFormsModule } from 'ng2-validation';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './products/products.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { CheckOutComponent } from './check-out/check-out.component';
-import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyTripsComponent } from './my-trips/my-trips.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
@@ -32,16 +28,14 @@ import { ProfileComponent } from './profile/profile.component';
 import { ManageBookingsComponent } from './admin/manage-bookings/manage-bookings.component';
 import { TripcardComponent } from './tripcard/tripcard.component';
 import { FooterComponent } from './footer/footer.component';
+import { BecomeATattlerComponent } from './become-a-tattler/become-a-tattler.component';
+
 
 @NgModule({
   declarations: [
   AppComponent,
   BsNavbarComponent,
   HomeComponent,
-  ProductsComponent,
-  ShoppingCartComponent,
-  CheckOutComponent,
-  OrderSuccessComponent,
   MyTripsComponent,
   AdminProductsComponent,
   AdminOrdersComponent,
@@ -52,7 +46,8 @@ import { FooterComponent } from './footer/footer.component';
   ProfileComponent,
   ManageBookingsComponent,
   TripcardComponent,
-  FooterComponent
+  FooterComponent,
+  BecomeATattlerComponent,
   ],
   imports: [
   BrowserModule,
@@ -64,16 +59,13 @@ import { FooterComponent } from './footer/footer.component';
   NgbModule.forRoot(),
   RouterModule.forRoot([
     { path: '', component: HomeComponent },
-    { path: 'products', component: ProductsComponent },
-    { path: 'shopping-cart', component: ShoppingCartComponent },
     { path: 'login', component: LoginComponent },
     { path: 'trip/:tripid/confirm', component: ConfirmbookingComponent, canActivate: [AuthGuard]},
     { path: 'trip/:tripname/:tripid', component: TripComponent},
     { path: 'profile/:uid', component: ProfileComponent},
-
-    { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
-    { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+    { path: 'profile/:uid/edit', component: BecomeATattlerComponent, canActivate: [AuthGuard]},
     { path: 'my/trips', component: MyTripsComponent, canActivate: [AuthGuard] },
+    { path: 'become-a-tattler', component: BecomeATattlerComponent, canActivate: [AuthGuard] },
 
     { 
       path: 'tattler/manage-bookings', 

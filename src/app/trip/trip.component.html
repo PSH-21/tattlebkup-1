@@ -1,4 +1,4 @@
-<div class="row">
+<div class="d-flex flex-column">
 	<h5>{{ trip$.tripname }}</h5>
 	<p class="description">{{ trip$.description }}</p>
 	<p class="small">
@@ -10,14 +10,14 @@
 
 <br/>
 
-<div class="row">
-	<div class="col">
+<div class="d-flex flex-row p-2 justify-content-center flex-wrap">
+	<div class="col card-col">
 		<tripcard [trip]="trip$"></tripcard>
 	</div>
 	<div class="col-4">
 		
 		<div class="form-group">
-			<form #f="ngForm" (ngSubmit)="showItinerary(f.value)">
+			<form #f="ngForm">
 				<div class="form-group">
 					<label for="adults">Choose no of adult(s):</label>
 					<input ngModel #adults="ngModel" id="adults" name="adults" type="number" min="1" [max]="trip$.maxmembers" class="form-control" value="0" required>

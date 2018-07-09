@@ -10,7 +10,39 @@ import 'rxjs/add/operator/take';
 	styleUrls: ['./trip-generator-form.component.css']
 })
 export class TripGeneratorFormComponent{
-	trip = {};
+	trip = {
+		tripname: '',
+		costadult: '',
+		costchild: '',
+		description: '',
+		maxmembers: '',
+		meetingaddress: '',
+		meetinglocation: '',
+		minmembers: '',
+		notice: '',
+		tattlerdetails:{},
+		transportation: '',
+		tripenddate: '',
+		tripendtime:'',
+		tripimage:'',
+		triplength:'',
+		tripstartdate:'',
+		tripstarttime:'',
+
+		adults: '',
+		bookerdetails: {},
+		children: '',
+		childtotal: '',
+		datebooked: '',
+		grandtotal: '',
+		paymentmode: '',
+		trip: {
+
+		},
+		tripdate: '',
+		tripid: '',
+		uid: ''
+	};
 	id;
 	constructor(private tripService: TripService, 
 		private router: Router,
@@ -20,13 +52,16 @@ export class TripGeneratorFormComponent{
 
 		this.id = this.route.snapshot.paramMap.get('id');
 		if(this.id){
-			this.tripService.getTrip(this.id).take(1).subscribe(trip => this.trip = trip);
-			//console.log(this.trip)
+			this.tripService.getTrip(this.id).take(1).subscribe(trip => {
+				this.trip = trip;
+
+			});
+			
 		}
 	}
 
-	save(trip){
-		//console.log(trip);
+	createTrip(trip){
+		console.log(trip);
 		if(this.id) this.tripService.updateTrip(this.id, trip);
 		else {
 			let tattler;

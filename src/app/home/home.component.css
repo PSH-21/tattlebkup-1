@@ -19,17 +19,25 @@
 	.featuredtrips{
 		color: #999;
 		font-weight: normal;
-		padding: 5px 0;
+		padding: 15px 0;
 	}
 
 	.album{
-		padding: 15px;
+		/*padding: 15px;*/
 		border-radius: 5px 5px 0;
+		margin-top: 40px;
+	}
+
+	.jumbotron-heading{
+		margin-top:35px;
+	}
+
+	.caption{
+		margin-bottom: 30px;
 	}
 
 	.card:hover {
 		box-shadow: 0 20px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-		transition: all @speed ease-in-out;
 	}
 
 	a.atitle{

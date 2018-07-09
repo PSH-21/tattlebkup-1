@@ -6,11 +6,15 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+
+modal: boolean = false;
+
   constructor(private auth: AuthService) { 
   }
 
   login() { 
+    this.modal = true;
     this.auth.login();
   }
 
@@ -21,4 +25,9 @@ export class LoginComponent {
   		console.log(response);
   	});
   }
+
+  ngOnInit(){
+    this.modal = false;
+  }
 }
+

@@ -23,17 +23,20 @@
 	<div class="col">
 		<img [src]="booking.trip.tripimage" class="tripimage">
 	</div>
-	<div class="col-7">
-		<h5><a [routerLink]="['/trip', booking.trip.tripname, booking.tripid]">{{ booking.trip.tripname }}</a> </h5>
+	<div class="col-6">
+		<h5 class="tripname"><a [routerLink]="['/trip', booking.trip.tripname, booking.tripid]">{{ booking.trip.tripname }}</a> </h5>
 		<p>Hosted by <a [routerLink]="['/profile', booking.trip.tattlerdetails.tattlerid]">{{ booking.trip.tattlerdetails.name }}</a></p>
 		<p class="small">{{ booking.trip.description }}</p>
 		<div class="row">
 			<div class="col">
-				<p class="small">Booked on {{ booking.datebooked | date : 'dd mm yyyy, hh:mm' }}</p>
+				<p class="small">Booked on <strong>{{ booking.datebooked | date : 'medium' }} </strong> <br/>
+					Meeting place: {{ booking.trip.meetingaddress }} <a [href]="booking.trip.meetinglocation">(Google Maps)</a>
+
+				</p>
 			</div>
 			<div class="col">
-				<p class="small">Adult(s): {{booking.adults }} Child(ren): {{booking.children}}</p>
-				<p class="small">Total cost: ${{booking.grandtotal }}.00</p>
+				<p class="small">Adult(s): {{booking.adults }} <br/>Child(ren): {{booking.children}}<br/>
+				Total cost: ${{booking.grandtotal }}.00</p>
 			</div>
 		</div>
 

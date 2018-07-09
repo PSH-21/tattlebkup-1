@@ -28,3 +28,8 @@
 .row{
 	font-size: 0.9rem;
 }
+
+.card-col{
+	min-width: 20rem;
+}
+
