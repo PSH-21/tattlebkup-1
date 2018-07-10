@@ -85,8 +85,8 @@
 			class="form-control" id="languagesspoken" size="5">
 					<option 
 						*ngFor="let languagespoken of languagesspoken$ | async" 
-						[value]="languagespoken.$value" [selected]="user$.details.languagesspoken.$value">
-						{{ languagespoken.$value }}
+						[value]="languagespoken?.$value" [selected]="user$.details.languagesspoken?.$value">
+						{{ languagespoken?.$value }}
 					</option>	
 			</select>
 			<div class="alert alert-danger" *ngIf="languagesspoken.touched && languagesspoken.invalid">
@@ -104,8 +104,8 @@
 							<select #culturalexperience1="ngModel" 
 							[(ngModel)]="user$.details.culturalexperience1" name="culturalexperience1" required id="culturalexperience1" class="form-control">
 								<option *ngFor="let ce of culturalexperience$ | async" 
-										[value]="ce.$value" [selected]="user$.details.culturalexperience1.$value">
-										{{ce.$value}}
+										[value]="ce?.$value" [selected]="user$.details.culturalexperience1?.$value">
+										{{ce?.$value}}
 								</option>
 							</select>
 							<div class="alert alert-danger" *ngIf="culturalexperience1.touched && culturalexperience1.invalid">
@@ -129,8 +129,8 @@
 							ngModel
 							name="culturalexperience2" id="culturalexperience2" class="form-control">
 								<option *ngFor="let ce of culturalexperience$ | async" 
-										[value]="ce.$value" [selected]="user$.details.culturalexperience2.$value">
-										{{ce.$value}}
+										[value]="ce?.$value" >
+										{{ce?.$value}}
 								</option>
 							</select>
 						</div>
