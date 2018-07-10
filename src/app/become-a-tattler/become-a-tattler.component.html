@@ -85,7 +85,7 @@
 			class="form-control" id="languagesspoken" size="5">
 					<option 
 						*ngFor="let languagespoken of languagesspoken$ | async" 
-						[value]="languagespoken.$value" [selected]="user$.details.languagesspoken">
+						[value]="languagespoken.$value" [selected]="user$.details.languagesspoken.$value">
 						{{ languagespoken.$value }}
 					</option>	
 			</select>
@@ -123,17 +123,22 @@
 					</div>
 					<br/>
 					<div class="row">
-						<div class="col">					
+						<div class="col">		
+									<!-- [(ngModel)]="user$.details.culturalexperience2"  -->
 							<select #culturalexperience2="ngModel" 
-							[(ngModel)]="user$.details.culturalexperience2" name="culturalexperience2" id="culturalexperience2" class="form-control">
+							ngModel
+							name="culturalexperience2" id="culturalexperience2" class="form-control">
 								<option *ngFor="let ce of culturalexperience$ | async" 
 										[value]="ce.$value">
 										{{ce.$value}}
 								</option>
 							</select>
 						</div>
+						<!-- [(ngModel)]="user$.details.ceyears2"  -->
 						<div class="col">
-							<input #ceyears2="ngModel" [(ngModel)]="user$.details.ceyears2" name="ceyears2" type="number" 
+							<input #ceyears2="ngModel" 
+							ngModel
+							name="ceyears2" type="number" 
 							class="form-control" />
 						</div>
 					</div>
