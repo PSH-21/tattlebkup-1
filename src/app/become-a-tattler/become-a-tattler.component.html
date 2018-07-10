@@ -104,7 +104,7 @@
 							<select #culturalexperience1="ngModel" 
 							[(ngModel)]="user$.details.culturalexperience1" name="culturalexperience1" required id="culturalexperience1" class="form-control">
 								<option *ngFor="let ce of culturalexperience$ | async" 
-										[value]="ce.$value" [selected]="user$.details.culturalexperience1">
+										[value]="ce.$value" [selected]="user$.details.culturalexperience1.$value">
 										{{ce.$value}}
 								</option>
 							</select>
@@ -129,7 +129,7 @@
 							ngModel
 							name="culturalexperience2" id="culturalexperience2" class="form-control">
 								<option *ngFor="let ce of culturalexperience$ | async" 
-										[value]="ce.$value">
+										[value]="ce.$value" [selected]="user$.details.culturalexperience2.$value">
 										{{ce.$value}}
 								</option>
 							</select>
