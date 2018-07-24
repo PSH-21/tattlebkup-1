@@ -10,6 +10,7 @@ import 'rxjs/add/operator/take';
 	styleUrls: ['./trip-generator-form.component.css']
 })
 export class TripGeneratorFormComponent{
+	value: Date;
 	trip = {
 		tripname: '',
 		costadult: '',

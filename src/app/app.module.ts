@@ -5,6 +5,7 @@ import { AuthService } from './auth.service';
 import { TripService } from './trip.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2'; 
 import { AngularFireDatabaseModule } from 'angularfire2/database'; 
@@ -29,6 +30,8 @@ import { ManageBookingsComponent } from './admin/manage-bookings/manage-bookings
 import { TripcardComponent } from './tripcard/tripcard.component';
 import { FooterComponent } from './footer/footer.component';
 import { BecomeATattlerComponent } from './become-a-tattler/become-a-tattler.component';
+// import { CalendarModule } from 'primeng/calendar';
+// import { CalendarComponent } from './calendar/calendar.component';
 
 
 @NgModule({
@@ -47,10 +50,11 @@ import { BecomeATattlerComponent } from './become-a-tattler/become-a-tattler.com
   ManageBookingsComponent,
   TripcardComponent,
   FooterComponent,
-  BecomeATattlerComponent,
+  BecomeATattlerComponent
   ],
   imports: [
   BrowserModule,
+  BrowserAnimationsModule,
   AngularFireModule.initializeApp(environment.firebase),
   AngularFireDatabaseModule,
   AngularFireAuthModule,

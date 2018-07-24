@@ -34,6 +34,13 @@
 				<div class="form-group">
 					<label for="tripdate">Choose date:</label> 
 					<input ngModel #tripdate="ngModel" type="date" id="tripdate" name="tripdate" class="form-control" required>
+					<!-- <yoshimi-calendar></yoshimi-calendar>
+					<p-calendar 
+						[(ngModel)]="value" [inline]="true" 
+						[ngModelOptions]="{standalone: true}"
+					>
+					</p-calendar> -->
+
 					<div class="alert alert-danger" *ngIf="tripdate.touched && tripdate.invalid">
 						<div *ngIf="tripdate.errors.required">Please select a date for the trip.</div>
 					</div>

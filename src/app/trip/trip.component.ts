@@ -13,6 +13,7 @@ import 'rxjs/add/operator/take';
 })
 export class TripComponent implements OnInit{
 	trip$;
+	value: Date;
 	constructor(private tripService: TripService, 
 		private route: ActivatedRoute, 
 		private router: Router,

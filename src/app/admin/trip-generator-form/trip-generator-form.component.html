@@ -22,7 +22,12 @@
 				<div class="form-group col">
 					<label for="tripstartdate">
 					Tour start date (Tour shows up on search results from this date)</label>
-					<input type="date" #tripstartdate="ngModel" [(ngModel)]="trip.tripstartdate" name="tripstartdate" id="tripstartdate" required class="form-control">
+					<input type="date" data-date-inline-picker="true" #tripstartdate="ngModel" [(ngModel)]="trip.tripstartdate" name="tripstartdate" id="tripstartdate" required class="form-control">
+					<!-- <p-calendar 
+						[(ngModel)]="value" [inline]="true" 
+						[ngModelOptions]="{standalone: true}"
+					>
+					</p-calendar> -->
 					<div class="alert alert-danger" *ngIf="tripstartdate.touched && tripstartdate.invalid">
 						<div *ngIf="tripstartdate.errors.required">Start date is required</div>
 					</div>
