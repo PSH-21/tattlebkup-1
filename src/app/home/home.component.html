@@ -44,9 +44,12 @@
 			
 
 			<div class="input-group mb-3">
-				<input #searchtrip="ngModel" ngModel name="searchtrip" id="searchtrip" type="text" class="form-control" placeholder="Search for experiences here..." aria-label="Search for trips" aria-describedby="search for trips">
-				<div class="input-group-append">
+				<input #searchtrip="ngModel" ngModel name="searchtrip" id="searchtrip" type="text" (keydown)="search($event)" class="form-control" placeholder="Search for experiences here..." aria-label="Search for trips" aria-describedby="search for trips">
+				<!-- <div class="input-group-append">
 					<button class="btn btn-primary" type="button" (click)="searchTrips(searchtrip.value)">Let's Go!</button>
+				</div> -->
+				<div class="input-group-append">
+					<button class="btn btn-primary" type="button" (click)="search(searchtrip.value)">Let's Go!</button>
 				</div>
 			</div>
 
@@ -66,7 +69,7 @@
 	<div class="album bg-light">
 		<div class="container">
 			<div class="row" [hidden]="!trips$">
-				<div class="col-md-4 card-group" *ngFor="let trip of trips$ | async">
+				<div class="col-md-4 card-group" *ngFor="let trip of trips$">
 					<tripcard [trip]="trip" [showBook]="true"></tripcard>
 				</div>
 			</div>

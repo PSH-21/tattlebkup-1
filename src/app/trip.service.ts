@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database'
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database'
 
 @Injectable()
 export class TripService {
@@ -14,15 +14,28 @@ export class TripService {
 		return this.db.list('/trips').push(trip);
 	}
 
-	getTrips(profileuid?){
-		let uid = (profileuid)? profileuid : this.uid;
-		return this.db.list('/trips', {
-			query: {
-				orderByChild: 'tattlerdetails/tattlerid',
-				equalTo: uid
-			}
-		});
-	}
+	// getTrips(profileuid?){
+	// 	let uid = (profileuid)? profileuid : this.uid;
+	// 	return this.db.list('/trips', {
+	// 		query: {
+	// 			orderByChild: 'tattlerdetails/tattlerid',
+	// 			equalTo: uid
+	// 		}
+	// 	});
+	// }
+
+	getTrips(start, end): FirebaseListObservable<any> {
+    return this.db.list('/trips', {
+      query: {
+        orderByChild: 'tripname',
+        limitToFirst: 10,
+        startAt: start,
+        endAt: end
+      }
+    });
+  }
+
+
 
 	getTrip(tripid){
 		return this.db.object('trips/' + tripid);
