@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   search($event) {
   	if ($event.timeStamp - this.lastKeypress > 200) {
-	  	let q = $event.target.value
+	  	let q = $event.target.value.toLowerCase()
 	  	this.startAt.next(q)
 	    this.endAt.next(q+"\uf8ff")
 	  }

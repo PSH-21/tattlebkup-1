@@ -52,7 +52,7 @@ export class TripService {
 	searchTrips(start, end): FirebaseListObservable<any> {
     return this.db.list('/trips', {
       query: {
-        orderByChild: 'tripname',
+        orderByChild: 'tripnameLower',
         limitToFirst: 10,
         startAt: start,
         endAt: end
