@@ -70,8 +70,14 @@
 		<div class="container">
 			<div class="row" [hidden]="!trips$">
 				<div class="col-md-4 card-group" *ngFor="let trip of trips$">
+					
 					<tripcard [trip]="trip" [showBook]="true"></tripcard>
 				</div>
+				<div *ngIf="trips$?.length < 1">
+  				<p>
+   					 No results found :(
+  				</p>
+  			</div>
 			</div>
 			<h6 class="featuredtrips">Featured Tours</h6>
 			<div class="row">

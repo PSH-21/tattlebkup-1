@@ -14,26 +14,26 @@ export class TripService {
 		return this.db.list('/trips').push(trip);
 	}
 
-	// getTrips(profileuid?){
-	// 	let uid = (profileuid)? profileuid : this.uid;
-	// 	return this.db.list('/trips', {
-	// 		query: {
-	// 			orderByChild: 'tattlerdetails/tattlerid',
-	// 			equalTo: uid
-	// 		}
-	// 	});
-	// }
+	getTrips(profileuid?){
+		let uid = (profileuid)? profileuid : this.uid;
+		return this.db.list('/trips', {
+			query: {
+				orderByChild: 'tattlerdetails/tattlerid',
+				equalTo: uid
+			}
+		});
+	}
 
-	getTrips(start, end): FirebaseListObservable<any> {
-    return this.db.list('/trips', {
-      query: {
-        orderByChild: 'tripname',
-        limitToFirst: 10,
-        startAt: start,
-        endAt: end
-      }
-    });
-  }
+	// getTrips(start, end): FirebaseListObservable<any> {
+ //    return this.db.list('/trips', {
+ //      query: {
+ //        orderByChild: 'tripname',
+ //        limitToFirst: 10,
+ //        startAt: start,
+ //        endAt: end
+ //      }
+ //    });
+ //  }
 
 
 
@@ -49,15 +49,26 @@ export class TripService {
 		return this.db.object('trips/' + tripid).remove();
 	}
 
-	searchTrips(query){
+	searchTrips(start, end): FirebaseListObservable<any> {
+    return this.db.list('/trips', {
+      query: {
+        orderByChild: 'tripname',
+        limitToFirst: 10,
+        startAt: start,
+        endAt: end
+      }
+    });
+  }
 
-		return this.db.list('/trips', {
-			query: {
-				orderByChild: "tripname",
-				startAt: query
-			}
-		})
-	}
+	// searchTrips(query){
+
+	// 	return this.db.list('/trips', {
+	// 		query: {
+	// 			orderByChild: "tripname",
+	// 			startAt: query
+	// 		}
+	// 	})
+	// }
 
 	getMyTrips(){
 

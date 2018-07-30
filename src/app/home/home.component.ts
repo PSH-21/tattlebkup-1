@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.tripService.getTrips(this.startAt, this.endAt).subscribe(trips$ => this.trips$ = trips$)
+  	this.tripService.searchTrips(this.startAt, this.endAt).subscribe(trips$ => this.trips$ = trips$)
   }
 
   search($event) {
