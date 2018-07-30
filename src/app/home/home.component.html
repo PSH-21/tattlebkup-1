@@ -44,7 +44,7 @@
 			
 
 			<div class="input-group mb-3">
-				<input #searchtrip="ngModel" ngModel name="searchtrip" id="searchtrip" type="text" (keydown)="search($event)" class="form-control" placeholder="Search for experiences here..." aria-label="Search for trips" aria-describedby="search for trips">
+				<input #searchtrip="ngModel" ngModel name="searchtrip" id="searchtrip" type="text" (keyup)="search($event)" class="form-control" placeholder="Search for experiences here..." aria-label="Search for trips" aria-describedby="search for trips">
 				<!-- <div class="input-group-append">
 					<button class="btn btn-primary" type="button" (click)="searchTrips(searchtrip.value)">Let's Go!</button>
 				</div> -->

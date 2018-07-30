@@ -61,7 +61,6 @@ export class TripService {
   }
 
 	// searchTrips(query){
-
 	// 	return this.db.list('/trips', {
 	// 		query: {
 	// 			orderByChild: "tripname",
