@@ -13,6 +13,7 @@ export class TripGeneratorFormComponent{
 	value: Date;
 	trip = {
 		tripname: '',
+		tripnameLower: '',
 		costadult: '',
 		costchild: '',
 		description: '',
@@ -63,6 +64,8 @@ export class TripGeneratorFormComponent{
 
 	createTrip(trip){
 		console.log(trip);
+		trip.tripnameLower = trip.tripname.toLowerCase();
+		// console.log(trip.tripnameLower);
 		if(this.id) this.tripService.updateTrip(this.id, trip);
 		else {
 			let tattler;
